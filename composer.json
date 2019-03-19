@@ -1,0 +1,46 @@
+{
+  "name": "nuboxdevcom/phpesker",
+  "description": "Library for PHP 7.2+ to interact with Esker Services",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "Esker",
+    "WebService",
+    "SOAP",
+    "nuboxdevcom",
+    "nubox"
+  ],
+  "authors": [
+    {
+      "name": "NuBOXDevCom",
+      "email": "slye@nubox.fr",
+      "homepage": "https://github.com/NuBOXDevCom",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/NuBOXDevCom/PHPEsker/issues",
+    "source": "https://github.com/NuBOXDevCom/PHPEsker/tree/master"
+  },
+  "homepage": "https://github.com/NuBOXDevCom/PHPEsker",
+  "require": {
+    "php": "^7.2",
+    "ext-soap": "*",
+    "ext-openssl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Esker\\": "src"
+    }
+  },
+  "scripts": {
+    "serve": "@php -S localhost:8000"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "process-timeout": 0
+  },
+  "prefer-stable": true
+}

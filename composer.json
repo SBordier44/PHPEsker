@@ -25,9 +25,7 @@
   },
   "homepage": "https://github.com/NuBOXDevCom/PHPEsker",
   "require": {
-    "php": "^7.2",
-    "ext-soap": "*",
-    "ext-openssl": "*"
+    "php": "^7.2"
   },
   "autoload": {
     "psr-4": {

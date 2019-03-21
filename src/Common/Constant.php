@@ -26,4 +26,34 @@ class Constant
         'FILTER_CONVERTED' => 'FILTER_CONVERTED',
         'FILTER_SOURCE' => 'FILTER_SOURCE'
     ];
+
+    public const MAIL_TYPE = [
+        'FR' => [
+            'Prior' => 'U', // default
+            'Eco' => 'E',
+            'Registered' => 'R1',
+            'Ecopli' => 'En'
+        ],
+        'US' => [
+            'FirstClass' => 'F' // default
+        ],
+        'ES' => [
+            'Standard' => 'S' // default
+        ],
+        'UK' => [
+            'Premier' => 'P', // default
+            'Standard' => 'S'
+        ],
+        'SP' => [
+            'Standard' => 'S' // default
+        ],
+        'BE' => [
+            'Prior' => 'P', // default
+            'PriorWithMailID' => 'PMID',
+            'NonPrior' => 'NP',
+            'DM1' => 'DM1',
+            'DM2' => 'DM2',
+            'Registered' => 'R'
+        ]
+    ];
 }

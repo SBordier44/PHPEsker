@@ -1,17 +1,18 @@
 <?php
 require 'vendor/autoload.php';
 
+use Esker\Common\Constant;
 use Esker\Common\Debug;
 use Esker\Common\Transport;
 use Esker\Esker;
 
 define('NL', chr(10));
 
-$eskerServiceUsername = 'xxx';
-$eskerServicePassword = 'xxx';
+$eskerServiceUsername = getenv('ESKER_USERNAME');
+$eskerServicePassword = getenv('ESKER_PASSWORD');
 
 $files = [
-    'data/invoice.pdf'
+    'data/633_factCli_A00109804_18-BU2-059672_2392964.pdf'
 ];
 
 $to = 'Entreprise XYZ' . NL . 'Service ABC' . NL . 'John DOE' . NL . '8 Rue de la pelouse verte' . NL . '44000 Nantes' . NL . 'France';
@@ -30,7 +31,10 @@ try {
         'SenderAddress' => 'Y',
         'AskDepositProof' => 'Y',
         'AskReceipt' => 'Y',
-        'AskReceiptNotification' => 'Y'
+        'Envelop' => 'C6',
+        'ExpressProcessing' => 'N', // Express Sender for urgent mail
+        'AskReceiptNotification' => 'Y',
+        'StampType' => Constant::MAIL_TYPE['FR']['Registered']
     ], $files, true, 'TEST - Development');
     $results = $esker->submitTransport();
     Debug::dump($results);

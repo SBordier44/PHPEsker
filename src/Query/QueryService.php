@@ -51,12 +51,13 @@ class QueryService
     /**
      * QueryService constructor.
      * @param string $wsdl
+     * @param bool $debugMode
      */
-    public function __construct(string $wsdl)
+    public function __construct(string $wsdl, bool $debugMode = false)
     {
         $this->client = new SoapClient($wsdl, [
-                'trace' => true,
-                'exceptions' => true,
+                'trace' => $debugMode,
+                'exceptions' => $debugMode,
                 'encoding' => 'utf-8'
             ]
         );
@@ -189,13 +190,14 @@ class QueryService
      * @param string $transportID
      * @param string $eFilter
      * @param string $eMode
-     * @return StatisticsResult
+     * @return Attachments
      */
-    public function QueryAttachments(string $transportID, string $eFilter, string $eMode): StatisticsResult
+    public function QueryAttachments(string $transportID, string $eFilter, string $eMode): Attachments
     {
         $this->_CheckEndPoint();
         $this->setQueryHeader();
         $param = ['transportID' => $transportID, 'eFilter' => $eFilter, 'eMode' => $eMode];
+        $attachments = new Attachments();
         try {
             $this->result = $this->client->__soapCall('QueryAttachments', ['parameters' => $param]);
             $attachments = $this->getAttachments($this->result->{'return'});

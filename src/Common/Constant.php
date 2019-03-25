@@ -27,11 +27,65 @@ class Constant
         'FILTER_SOURCE' => 'FILTER_SOURCE'
     ];
 
+    public const STATES = [
+        'FR' => [
+            0 => 'En cours de traitement - Mis en file d\'attente',
+            10 => 'En cours de traitement - Soumis',
+            30 => 'En cours de traitement - Accepté',
+            40 => 'En cours de traitement - Conversion en cours',
+            50 => 'En cours de traitement - Prêt',
+            60 => 'En cours de traitement - Nouvelle tentative',
+            70 => 'A valider',
+            80 => 'Occupé',
+            90 => 'En cours de traitement - Veuillez patienter',
+            100 => 'Réussi',
+            200 => 'Echec',
+            300 => 'Annulé',
+            400 => 'Rejeté'
+        ],
+        'EN' => [
+            0 => 'Being processed - Queued',
+            10 => 'Being processed - Submitted',
+            30 => 'Being processed - Accepted',
+            40 => 'Being processed - Converting',
+            50 => 'Being processed - Ready',
+            60 => 'Being processed - On retry',
+            70 => 'To validate',
+            80 => 'Busy',
+            90 => 'Being processed - Waiting',
+            100 => 'Successful',
+            200 => 'Failure',
+            300 => 'Canceled',
+            400 => 'Rejected'
+        ]
+    ];
+
+    public const VALIDATION_STATES = [
+        'FR' => [
+            0 => 'Non traité',
+            1 => 'Approuvé',
+            2 => 'Rejeté',
+            3 => 'Transféré',
+            4 => 'Transféré par l\'administrateur',
+            5 => 'Rerouté par le gestionnaire',
+            6 => 'Le document à été divisé et attend que les documents émis soient validés'
+        ],
+        'EN' => [
+            0 => 'Unprocessed',
+            1 => 'Approved',
+            2 => 'Rejected',
+            3 => 'Forwarded (User forms only)',
+            4 => 'Transferred by the administrator (User forms only)',
+            5 => 'Rerouted by the Out of Office Manager (User forms only)',
+            6 => 'Document has been split and is waiting for the issued documents to be validated. (User forms only)'
+        ]
+    ];
+
     public const MAIL_TYPE = [
         'FR' => [
-            'Prior' => 'U', // default
-            'Eco' => 'E',
-            'Registered' => 'R1',
+            'Prioritaire' => 'U', // default
+            'Economique' => 'E',
+            'Recommande' => 'R1',
             'Ecopli' => 'En'
         ],
         'US' => [

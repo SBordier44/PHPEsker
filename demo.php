@@ -12,7 +12,7 @@ $eskerServiceUsername = getenv('ESKER_USERNAME');
 $eskerServicePassword = getenv('ESKER_PASSWORD');
 
 $files = [
-    'data/633_factCli_A00109804_18-BU2-059672_2392964.pdf'
+    'data/invoice.pdf'
 ];
 
 $to = 'Entreprise XYZ' . NL . 'Service ABC' . NL . 'John DOE' . NL . '8 Rue de la pelouse verte' . NL . '44000 Nantes' . NL . 'France';
@@ -34,7 +34,8 @@ try {
         'Envelop' => 'C6',
         'ExpressProcessing' => 'N', // Express Sender for urgent mail
         'AskReceiptNotification' => 'Y',
-        'StampType' => Constant::MAIL_TYPE['FR']['Registered']
+        'StampType' => Constant::MAIL_TYPE['FR']['Recommande'],
+        'ReceiptManageByFlyDoc' => 'Y'
     ], $files, true, 'TEST - Development');
     $results = $esker->submitTransport();
     Debug::dump($results);

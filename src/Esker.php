@@ -6,7 +6,9 @@ use Esker\Common\Constant;
 use Esker\Exception\BindingException;
 use Esker\Exception\LoginException;
 use Esker\Exception\SubmitTransportException;
+use Esker\Query\Header;
 use Esker\Query\QueryService;
+use Esker\Query\Request;
 use Esker\Session\SessionService;
 use Esker\Submission\Attachment;
 use Esker\Submission\File;
@@ -61,11 +63,11 @@ class Esker
         if ($session->eskerException) {
             throw new LoginException('Failed call Login : ' . $session->eskerException->Message);
         }
-        $this->submissionService = new SubmissionService($bindings->submissionServiceWSDL);
+        $this->submissionService = new SubmissionService($bindings->submissionServiceWSDL, $debugMode);
         $this->submissionService->Url = $bindings->submissionServiceLocation;
         $this->submissionService->SessionHeaderValue = new SessionHeader();
         $this->submissionService->SessionHeaderValue->sessionID = $login->sessionID;
-        $this->queryService = new QueryService($bindings->queryServiceWSDL);
+        $this->queryService = new QueryService($bindings->queryServiceWSDL, $debugMode);
         $this->queryService->Url = $bindings->queryServiceLocation;
         $this->queryService->SessionHeaderValue = new Query\SessionHeader();
         $this->queryService->SessionHeaderValue->sessionID = $login->sessionID;
@@ -212,5 +214,20 @@ class Esker
             return $filename;
         }
         return substr($filename, $i + 1);
+    }
+
+    /**
+     * @param string $ruidex
+     * @return Query\Result
+     */
+    public function getLetterStatuses(string $ruidex): Query\Result
+    {
+        $this->queryService->QueryHeaderValue = new Header();
+        $this->queryService->QueryHeaderValue->recipientType = 'MOD';
+        $request = new Request();
+        $request->nItems = 1;
+        $request->attributes = '';
+        $request->filter = '(&(RuidEx=' . $ruidex . '))';
+        return $this->queryService->QueryFirst($request);
     }
 }

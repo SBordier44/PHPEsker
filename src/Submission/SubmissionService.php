@@ -38,11 +38,13 @@ class SubmissionService
     /**
      * SubmissionService constructor.
      * @param string $wsdl
+     * @param bool $debugMode
      */
-    public function __construct(string $wsdl)
+    public function __construct(string $wsdl, bool $debugMode = false)
     {
         $this->client = new SoapClient($wsdl, [
-                'exceptions' => true,
+                'exceptions' => $debugMode,
+                'trace' => $debugMode,
                 'encoding' => 'utf-8',
             ]
         );

@@ -8,14 +8,14 @@
     "Esker",
     "WebService",
     "SOAP",
-    "nuboxdevcom",
-    "nubox"
+    "slye44",
+    "sbordier44"
   ],
   "authors": [
     {
-      "name": "NuBOXDevCom",
+      "name": "Sylvain B.",
       "email": "slye@nubox.fr",
-      "homepage": "https://github.com/NuBOXDevCom",
+      "homepage": "https://github.com/SBordier44",
       "role": "Developer"
     }
   ],
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/NuBOXDevCom/PHPEsker",
   "require": {
-    "php": "^7.2"
+    "php": ">= 7.2"
   },
   "autoload": {
     "psr-4": {
